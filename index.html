@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will you be my valentine?</title>
+    <link rel="icon" type="image/x-icon" href="https://media.tenor.com/wbqDH6hm_gcAAAAi/peach-goma-peach-and-goma.gif" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Pacifico&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffe9e9;
+        }
+
+        #not-accepted, #accepted {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1.4rem;
+        }
+
+        .gif {
+            width: 120px;
+            height: auto;
+        }
+
+        .question {
+            font-size: 1.8rem;
+            font-family: "Pacifico", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            font-weight: bold;
+            font-size: 1.2rem;
+            font-family: "Nunito", sans-serif;
+            color: white;
+            padding: 10px 18px;
+            outline: none;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            transition: .2s ease-in;
+        }
+
+        #acceptedBtn {
+            background-color: #26d226;
+            border: 1px solid #178917;
+        }
+        #acceptedBtn:hover, #acceptedBtn:focus {
+            background-color: #29e329;
+        }
+        
+        #rejectedBtn {
+            background-color: #d22626;
+            border: 1px solid #891717;
+        }
+        #rejectedBtn:hover, #rejectedBtn:focus {
+            background-color: #e32929;
+        }
+    </style>
+</head>
+<body>
+    <div id="not-accepted">
+        <div class="gif-container">
+            <img id="nc-gif" class="gif" src="https://media.tenor.com/l4rQl6wnYJ0AAAAi/cute-bunny.gif" />
+        </div>
+    
+        <p class="question">
+            Will you be my valentine?
+        </p>
+    
+        <div class="btn-container">
+            <button id="acceptedBtn" onclick="accepted()">YES</button>
+            <button id="rejectedBtn" onclick="rejected()">NO</button>
+        </div>
+    </div>
+
+    <div id="accepted" style="display: none;">
+        <img class="gif" src="https://media.tenor.com/Njz6KhQZWLkAAAAi/tkthao219-bubududu.gif" />
+    </div>
+
+    <script>
+        const acceptedDiv = document.getElementById('accepted')
+        const notAcceptedDiv = document.getElementById('not-accepted')
+
+        const acceptedBtn = document.getElementById('acceptedBtn')
+        const rejectedBtn = document.getElementById('rejectedBtn')
+
+        const ncGif = document.getElementById('nc-gif')
+
+        let index = 0
+        let fontSize = 2
+
+        const redBtnTexts = [
+            "Are you sure?",
+            "Really?",
+            "Think again!",
+            "Why? :(",
+            "You are joking right?",
+            "Please ;_; I love you",
+            "Reconsider ;_;",
+            "Final answer?",
+            "You are breaking my heart </3",
+        ]
+
+        const gifLinks = [
+            "https://media.tenor.com/wbqDH6hm_gcAAAAi/peach-goma-peach-and-goma.gif",
+            "https://media.tenor.com/93-p-KMJDx4AAAAi/cute-ghost.gif",
+            "https://media.tenor.com/tzvzrz4famQAAAAi/couple-forgive-me.gif",
+            "https://media.tenor.com/pmdcqu-_WCkAAAAi/sad-brown-please.gif",
+            "https://media1.tenor.com/m/IwRwY3UytWwAAAAC/ryan-kakao-talk.gif",
+            "https://media.tenor.com/CTQDRpAeOKcAAAAi/pirate-begging.gif",
+            "https://media.tenor.com/dltr8Wx24g8AAAAi/mochi.gif",
+            "https://media.tenor.com/gVEH5W7UyQAAAAAi/bubududu-panda.gif",
+            "https://media.tenor.com/2DbtR2cs0-8AAAAi/mimibubu.gif"
+        ]
+
+        function rejected() {
+            if (index != redBtnTexts.length) {
+                rejectedBtn.textContent = redBtnTexts[index]
+                ncGif.src = gifLinks[index]
+                index++
+    
+                acceptedBtn.style.fontSize = `${fontSize++}rem`
+            }
+        }
+
+        function accepted() {
+            acceptedDiv.style.display = "flex"
+            notAcceptedDiv.style.display = "none"
+        }
+    </script>
+</body>
+</html>
