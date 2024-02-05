@@ -26,7 +26,7 @@
             background-color: #ffe9e9;
         }
 
-        #not-accepted, #accepted {
+        #not-accepted, #accepted, #rejected {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -35,7 +35,7 @@
         }
 
         .gif {
-            width: 120px;
+            width: 140px;
             height: auto;
         }
 
@@ -99,6 +99,10 @@
         </div>
     </div>
 
+    <div id="rejected" style="display: none;">
+        <img class="gif" src="https://media.tenor.com/JK3yt5L0j_gAAAAi/sad-stitch.gif" />
+    </div>
+
     <div id="accepted" style="display: none;">
         <img class="gif" src="https://media.tenor.com/Njz6KhQZWLkAAAAi/tkthao219-bubududu.gif" />
     </div>
@@ -106,6 +110,7 @@
     <script>
         const acceptedDiv = document.getElementById('accepted')
         const notAcceptedDiv = document.getElementById('not-accepted')
+        const rejectedDiv = document.getElementById('rejected')
 
         const acceptedBtn = document.getElementById('acceptedBtn')
         const rejectedBtn = document.getElementById('rejectedBtn')
@@ -146,6 +151,10 @@
                 index++
     
                 acceptedBtn.style.fontSize = `${fontSize++}rem`
+            } else {
+                notAcceptedDiv.style.display = 'none'
+                rejectedDiv.style.display = 'flex'
+                document.getElementsByTagName('body')[0].style.backgroundColor = '#858585'
             }
         }
 
